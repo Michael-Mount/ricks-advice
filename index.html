@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rick's Advice Video Gallery</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #ffffff;
+        color: #1f2933;
+      }
+
+      .ricks-advice {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 50px 20px;
+        box-sizing: border-box;
+      }
+
+      .ricks-advice-header {
+        text-align: center;
+        margin-bottom: 35px;
+      }
+
+      .ricks-advice-header h2 {
+        font-size: 36px;
+        line-height: 1.2;
+        margin: 0 0 12px;
+        color: #1f2933;
+      }
+
+      .ricks-advice-header p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin: 0 auto;
+        max-width: 700px;
+        color: #4b5563;
+      }
+
+      .video-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+      }
+
+      .video-card {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      }
+
+      .video-wrapper {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%;
+        background: #000;
+      }
+
+      .video-wrapper iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .video-content {
+        padding: 22px;
+      }
+
+      .video-content h3 {
+        font-size: 22px;
+        line-height: 1.3;
+        margin: 0 0 10px;
+      }
+
+      .video-content p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 0;
+        color: #4b5563;
+      }
+
+      @media (max-width: 768px) {
+        .ricks-advice {
+          padding: 35px 16px;
+        }
+
+        .video-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .ricks-advice-header h2 {
+          font-size: 30px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="ricks-advice">
+      <div class="ricks-advice-header">
+        <h2>Rick's Advice</h2>
+        <p>
+          Practical hotel consulting insights, case studies, and free advice
+          from Rick Blackburn of BRN Solutions.
+        </p>
+      </div>
+
+      <div class="video-grid">
+        <article class="video-card">
+          <div class="video-wrapper">
+            <iframe
+              src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=Video_6_wewng6"
+              title="Hotel consulting advice from Rick Blackburn"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="video-content">
+            <h3>Hotel Turnaround Advice</h3>
+            <p>
+              Rick shares practical guidance for struggling hotels looking to
+              improve operations, guest experience, and profitability.
+            </p>
+          </div>
+        </article>
+
+        <article class="video-card">
+          <div class="video-wrapper">
+            <iframe
+              src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=Video_5_psglkd"
+              title="Hotel case study video from BRN Solutions"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="video-content">
+            <h3>Case Study Insights</h3>
+            <p>
+              A closer look at how BRN Solutions helps hotel owners identify
+              problems and create a clear path forward.
+            </p>
+          </div>
+        </article>
+
+        <article class="video-card">
+          <div class="video-wrapper">
+            <iframe
+              src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=Video_4_cgoue4"
+              title="Hotel case study video from BRN Solutions"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="video-content">
+            <h3>Case Study Insights</h3>
+            <p>
+              A closer look at how BRN Solutions helps hotel owners identify
+              problems and create a clear path forward.
+            </p>
+          </div>
+        </article>
+
+        <article class="video-card">
+          <div class="video-wrapper">
+            <iframe
+              src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=LI_video_april_2_a89alm"
+              title="Hotel case study video from BRN Solutions"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="video-content">
+            <h3>Case Study Insights</h3>
+            <p>
+              A closer look at how BRN Solutions helps hotel owners identify
+              problems and create a clear path forward.
+            </p>
+          </div>
+        </article>
+
+        <article class="video-card">
+          <div class="video-wrapper">
+            <iframe
+              src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=BRN_edit_2_nrn2yk"
+              title="Hotel case study video from BRN Solutions"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="video-content">
+            <h3>Case Study Insights</h3>
+            <p>
+              A closer look at how BRN Solutions helps hotel owners identify
+              problems and create a clear path forward.
+            </p>
+          </div>
+        </article>
+
+        <article class="video-card">
+          <div class="video-wrapper">
+            <iframe
+              src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=BRN_hiring_edit_3_khhh9w"
+              title="Hotel case study video from BRN Solutions"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="video-content">
+            <h3>Case Study Insights</h3>
+            <p>
+              A closer look at how BRN Solutions helps hotel owners identify
+              problems and create a clear path forward.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </body>
+</html>
