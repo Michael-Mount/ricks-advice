@@ -9,13 +9,13 @@
       body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: #f6f6f6;
+        background: #ffffff;
         color: #1f2933;
       }
 
       .ricks-advice {
         width: 100%;
-        max-width: 1200px;
+        max-width: 1000px;
         margin: 0 auto;
         padding: 50px 20px;
         box-sizing: border-box;
@@ -28,17 +28,16 @@
 
       .ricks-advice-header h2 {
         font-size: 36px;
-        line-height: 1.2;
-        margin: 0 0 12px;
-        color: #1f2933;
+        font-family: var(--kv-ee-heading-font-family);
+        font-weight: var(--kv-ee-heading-font-weight, normal);
+        font-style: var(--kv-ee-heading-font-style, normal);
       }
 
       .ricks-advice-header p {
         font-size: 18px;
-        line-height: 1.6;
-        margin: 0 auto;
-        max-width: 700px;
-        color: #4b5563;
+        font-family: var(--kv-ee-body-font-family);
+        font-weight: var(--kv-ee-body-font-weight, normal);
+        font-style: var(--kv-ee-body-font-style, normal);
       }
 
       .video-grid {
@@ -58,7 +57,7 @@
       .video-wrapper {
         position: relative;
         width: 100%;
-        padding-top: 56.25%;
+        aspect-ratio: 9 / 16;
         background: #000;
       }
 
@@ -106,7 +105,7 @@
   <body>
     <section class="ricks-advice">
       <div class="ricks-advice-header">
-        <h2>Rick's Advice</h2>
+        <h2>Video's from the Founder</h2>
         <p>
           Practical hotel consulting insights, case studies, and free advice
           from Rick Blackburn of BRN Solutions.
@@ -215,7 +214,42 @@
             </p>
           </div>
         </article>
+
+        <article class="video-card">
+          <div class="video-wrapper">
+            <iframe
+              src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=LinkedIn_Video_Why_Hospitality_qgbwoq"
+              title="Hotel case study video from BRN Solutions"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="video-content">
+            <h3>Case Study Insights</h3>
+            <p>
+              A closer look at how BRN Solutions helps hotel owners identify
+              problems and create a clear path forward.
+            </p>
+          </div>
+        </article>
+
+        <article class="video-card">
+          <div class="video-wrapper">
+            <iframe
+              src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=BRN_Feb_12_Video_Edit_1_cagyev"
+              title="Hotel case study video from BRN Solutions"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="video-content">
+            <h3>Case Study Insights</h3>
+            <p>
+              A closer look at how BRN Solutions helps hotel owners identify
+              problems and create a clear path forward.
+            </p>
+          </div>
+        </article>
       </div>
     </section>
   </body>
 </html>
+
