@@ -5,16 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rick's Advice Video Gallery</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
     <style>
+      :root {
+        --brn-navy: #3f4564;
+        --brn-text: #1f2937;
+        --brn-muted: #374151;
+        --brn-bg: #f6f6f6;
+        --brn-card: #ffffff;
+        --brn-border: #d1d5db;
+        --brn-focus: #1d4ed8;
+      }
+
       body {
         margin: 0;
-        background: #f6f6f6;
+        background: var(--brn-bg);
+        color: var(--brn-text);
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
       }
 
       .ricks-advice {
@@ -27,37 +38,35 @@
 
       .ricks-advice-header {
         text-align: center;
-        margin-bottom: 35px;
+        max-width: 760px;
+        margin: 0 auto 35px;
       }
 
       .ricks-advice-header h2 {
-        font-size: 36px;
-        color: #565c7c;
-        font-family: "Roboto", sans-serif;
-        font-optical-sizing: auto;
-        font-style: normal;
-        font-variation-settings: "wdth" 100;
+        margin: 0 0 14px;
+        font-size: clamp(30px, 4vw, 40px);
+        line-height: 1.15;
+        color: var(--brn-navy);
         text-transform: uppercase;
+        letter-spacing: 0.02em;
       }
 
       .ricks-advice-header p {
-        font-size: 16px;
-        color: #212121;
-        font-family: "Lora", serif;
-        font-optical-sizing: auto;
-
-        font-style: normal;
+        margin: 0;
+        font-size: 17px;
+        line-height: 1.6;
+        color: var(--brn-text);
       }
 
       .video-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 28px;
       }
 
       .video-card {
-        background: #ffffff;
-        border: 1px solid #e5e7eb;
+        background: var(--brn-card);
+        border: 1px solid var(--brn-border);
         border-radius: 14px;
         overflow: hidden;
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
@@ -67,7 +76,54 @@
         position: relative;
         width: 100%;
         aspect-ratio: 9 / 16;
-        background: #000;
+        background: #111827;
+      }
+
+      .video-load-button {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.55)),
+          var(--thumb-url) center / cover no-repeat;
+      }
+
+      .video-load-button::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.15);
+      }
+
+      .play-icon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 68px;
+        height: 68px;
+        transform: translate(-50%, -50%);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      }
+
+      .play-icon::after {
+        content: "";
+        position: absolute;
+        left: 27px;
+        top: 21px;
+        border-left: 20px solid var(--brn-navy);
+        border-top: 13px solid transparent;
+        border-bottom: 13px solid transparent;
+      }
+
+      .video-load-button:focus-visible {
+        outline: 4px solid var(--brn-focus);
+        outline-offset: -4px;
       }
 
       .video-wrapper iframe {
@@ -83,23 +139,40 @@
       }
 
       .video-content h3 {
-        font-size: 20px;
-        color: #565c7c;
-        font-family: "Roboto", sans-serif;
-        font-optical-sizing: auto;
-        font-style: normal;
-        font-variation-settings: "wdth" 100;
+        margin: 0 0 10px;
+        font-size: 19px;
+        line-height: 1.35;
+        color: var(--brn-navy);
         text-transform: uppercase;
+        letter-spacing: 0.01em;
       }
 
       .video-content p {
-        font-size: 16px;
-        line-height: 1.6;
         margin: 0;
-        color: #4b5563;
+        font-size: 15.5px;
+        line-height: 1.6;
+        color: var(--brn-muted);
       }
 
-      @media (max-width: 768px) {
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      @media (max-width: 900px) {
+        .video-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
         .ricks-advice {
           padding: 35px 16px;
         }
@@ -107,131 +180,240 @@
         .video-grid {
           grid-template-columns: 1fr;
         }
-
-        .ricks-advice-header h2 {
-          font-size: 30px;
-        }
       }
     </style>
   </head>
 
   <body>
-    <section class="ricks-advice">
+    <section
+      class="ricks-advice"
+      aria-labelledby="ricks-advice-heading"
+      aria-describedby="ricks-advice-description"
+    >
       <div class="ricks-advice-header">
-        <h2>Videos from the Founder</h2>
-        <p>
-          Practical hotel consulting insights, case studies, and free advice
-          from Rick Blackburn of BRN Solutions.
+        <h2 id="ricks-advice-heading">Videos from the Founder</h2>
+        <p id="ricks-advice-description">
+          Practical hotel consulting insights, leadership guidance, and
+          hospitality advice from Rick Blackburn of BRN Solutions.
         </p>
       </div>
 
       <div class="video-grid">
         <article class="video-card">
           <div class="video-wrapper">
-            <iframe
-              src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=Video_6_wewng6"
-              title="No One is Coming to Save You"
-              allowfullscreen
-            ></iframe>
+            <button
+              class="video-load-button"
+              type="button"
+              style="
+                --thumb-url: url(&quot;https://res.cloudinary.com/dnhvjwqak/video/upload/so_0/Video_6_wewng6.jpg&quot;);
+              "
+              data-src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=Video_6_wewng6"
+              data-title="No One is Coming to Save You"
+              aria-label="Play video: No One is Coming to Save You"
+            >
+              <span class="play-icon" aria-hidden="true"></span>
+            </button>
           </div>
           <div class="video-content">
             <h3>No One is Coming to Save You</h3>
+            <p>
+              A short hospitality leadership video about ownership,
+              accountability, and taking action when performance needs to
+              improve.
+            </p>
           </div>
         </article>
 
         <article class="video-card">
           <div class="video-wrapper">
-            <iframe
-              src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=Video_5_psglkd"
-              title="Accountability versus Micromanaging"
-              allowfullscreen
-            ></iframe>
+            <button
+              class="video-load-button"
+              type="button"
+              style="
+                --thumb-url: url(&quot;https://res.cloudinary.com/dnhvjwqak/video/upload/so_0/Video_5_psglkd.jpg&quot;);
+              "
+              data-src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=Video_5_psglkd"
+              data-title="Accountability versus Micromanaging"
+              aria-label="Play video: Accountability versus Micromanaging"
+            >
+              <span class="play-icon" aria-hidden="true"></span>
+            </button>
           </div>
           <div class="video-content">
             <h3>Accountability versus Micromanaging</h3>
+            <p>
+              Rick discusses the difference between healthy accountability and
+              unproductive micromanagement in hospitality leadership.
+            </p>
           </div>
         </article>
 
         <article class="video-card">
           <div class="video-wrapper">
-            <iframe
-              src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=Video_4_cgoue4"
-              title="How Do We Grow Leadership Talent in Hospitality?"
-              allowfullscreen
-            ></iframe>
+            <button
+              class="video-load-button"
+              type="button"
+              style="
+                --thumb-url: url(&quot;https://res.cloudinary.com/dnhvjwqak/video/upload/so_0/Video_4_cgoue4.jpg&quot;);
+              "
+              data-src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=Video_4_cgoue4"
+              data-title="How Do We Grow Leadership Talent in Hospitality?"
+              aria-label="Play video: How Do We Grow Leadership Talent in Hospitality?"
+            >
+              <span class="play-icon" aria-hidden="true"></span>
+            </button>
           </div>
           <div class="video-content">
             <h3>How Do We Grow Leadership Talent in Hospitality?</h3>
+            <p>
+              A practical look at developing future hospitality leaders and
+              building stronger teams from within.
+            </p>
           </div>
         </article>
 
         <article class="video-card">
           <div class="video-wrapper">
-            <iframe
-              src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=LI_video_april_2_a89alm"
-              title="You Made a Mistake. Now what?"
-              allowfullscreen
-            ></iframe>
+            <button
+              class="video-load-button"
+              type="button"
+              style="
+                --thumb-url: url(&quot;https://res.cloudinary.com/dnhvjwqak/video/upload/so_0/LI_video_april_2_a89alm.jpg&quot;);
+              "
+              data-src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=LI_video_april_2_a89alm"
+              data-title="You Made a Mistake. Now What?"
+              aria-label="Play video: You Made a Mistake. Now What?"
+            >
+              <span class="play-icon" aria-hidden="true"></span>
+            </button>
           </div>
           <div class="video-content">
-            <h3>You Made a Mistake. Now what?</h3>
+            <h3>You Made a Mistake. Now What?</h3>
+            <p>
+              Guidance for leaders on how to respond, reset, and move forward
+              after a mistake.
+            </p>
           </div>
         </article>
 
         <article class="video-card">
           <div class="video-wrapper">
-            <iframe
-              src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=BRN_edit_2_nrn2yk"
-              title="What is the Toughest Challenge for Commercial Leaders Today?"
-              allowfullscreen
-            ></iframe>
+            <button
+              class="video-load-button"
+              type="button"
+              style="
+                --thumb-url: url(&quot;https://res.cloudinary.com/dnhvjwqak/video/upload/so_0/BRN_edit_2_nrn2yk.jpg&quot;);
+              "
+              data-src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=BRN_edit_2_nrn2yk"
+              data-title="What is the Toughest Challenge for Commercial Leaders Today?"
+              aria-label="Play video: What is the Toughest Challenge for Commercial Leaders Today?"
+            >
+              <span class="play-icon" aria-hidden="true"></span>
+            </button>
           </div>
           <div class="video-content">
             <h3>
               What is the Toughest Challenge for Commercial Leaders Today?
             </h3>
+            <p>
+              A short discussion on the pressures facing commercial leaders in
+              today’s hospitality environment.
+            </p>
           </div>
         </article>
 
         <article class="video-card">
           <div class="video-wrapper">
-            <iframe
-              src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=BRN_hiring_edit_3_khhh9w"
-              title="The Importance of Recruiting the Right Talent"
-              allowfullscreen
-            ></iframe>
+            <button
+              class="video-load-button"
+              type="button"
+              style="
+                --thumb-url: url(&quot;https://res.cloudinary.com/dnhvjwqak/video/upload/so_0/BRN_hiring_edit_3_khhh9w.jpg&quot;);
+              "
+              data-src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=BRN_hiring_edit_3_khhh9w"
+              data-title="The Importance of Recruiting the Right Talent"
+              aria-label="Play video: The Importance of Recruiting the Right Talent"
+            >
+              <span class="play-icon" aria-hidden="true"></span>
+            </button>
           </div>
           <div class="video-content">
             <h3>The Importance of Recruiting the Right Talent</h3>
+            <p>
+              Rick shares thoughts on hiring, talent fit, and building stronger
+              hospitality teams.
+            </p>
           </div>
         </article>
 
         <article class="video-card">
           <div class="video-wrapper">
-            <iframe
-              src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=LinkedIn_Video_Why_Hospitality_qgbwoq"
-              title="Why Would Anyone Want to Work in Hospitality?"
-              allowfullscreen
-            ></iframe>
+            <button
+              class="video-load-button"
+              type="button"
+              style="
+                --thumb-url: url(&quot;https://res.cloudinary.com/dnhvjwqak/video/upload/so_0/LinkedIn_Video_Why_Hospitality_qgbwoq.jpg&quot;);
+              "
+              data-src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=LinkedIn_Video_Why_Hospitality_qgbwoq"
+              data-title="Why Would Anyone Want to Work in Hospitality?"
+              aria-label="Play video: Why Would Anyone Want to Work in Hospitality?"
+            >
+              <span class="play-icon" aria-hidden="true"></span>
+            </button>
           </div>
           <div class="video-content">
             <h3>Why Would Anyone Want to Work in Hospitality?</h3>
+            <p>
+              A perspective on hospitality careers, leadership, and the value of
+              the industry.
+            </p>
           </div>
         </article>
 
         <article class="video-card">
           <div class="video-wrapper">
-            <iframe
-              src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=BRN_Feb_12_Video_Edit_1_cagyev"
-              title="Are You Seeing the Same Trend in Interviewing?"
-              allowfullscreen
-            ></iframe>
+            <button
+              class="video-load-button"
+              type="button"
+              style="
+                --thumb-url: url(&quot;https://res.cloudinary.com/dnhvjwqak/video/upload/so_0/BRN_Feb_12_Video_Edit_1_cagyev.jpg&quot;);
+              "
+              data-src="https://player.cloudinary.com/embed/?cloud_name=dnhvjwqak&public_id=BRN_Feb_12_Video_Edit_1_cagyev"
+              data-title="Are You Seeing the Same Trend in Interviewing?"
+              aria-label="Play video: Are You Seeing the Same Trend in Interviewing?"
+            >
+              <span class="play-icon" aria-hidden="true"></span>
+            </button>
           </div>
           <div class="video-content">
             <h3>Are You Seeing the Same Trend in Interviewing?</h3>
+            <p>
+              Rick discusses hiring trends, interviewing, and what hospitality
+              leaders should watch for.
+            </p>
           </div>
         </article>
       </div>
     </section>
+
+    <script>
+      document.querySelectorAll(".video-load-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          const iframe = document.createElement("iframe");
+          const title = button.dataset.title;
+          const src = button.dataset.src;
+
+          iframe.src = src;
+          iframe.title = title;
+          iframe.loading = "lazy";
+          iframe.allow =
+            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+          iframe.allowFullscreen = true;
+          iframe.referrerPolicy = "strict-origin-when-cross-origin";
+
+          button.replaceWith(iframe);
+        });
+      });
+    </script>
   </body>
 </html>
